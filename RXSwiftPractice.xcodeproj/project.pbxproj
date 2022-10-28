@@ -10,6 +10,7 @@
 		D0BE4856290C18E800409A5B /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BE4855290C18E800409A5B /* Memo.swift */; };
 		D0BE485A290C1CEF00409A5B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D0BE4859290C1CEF00409A5B /* Realm */; };
 		D0BE485C290C1CEF00409A5B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0BE485B290C1CEF00409A5B /* RealmSwift */; };
+		D0BE485E290C1E7700409A5B /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BE485D290C1E7700409A5B /* MemoViewModel.swift */; };
 		D0C64B6A290C03F500088322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C64B69290C03F500088322 /* AppDelegate.swift */; };
 		D0C64B6C290C03F500088322 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C64B6B290C03F500088322 /* SceneDelegate.swift */; };
 		D0C64B73290C03F500088322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0C64B72290C03F500088322 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		D0BE4855290C18E800409A5B /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		D0BE485D290C1E7700409A5B /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
 		D0C64B66290C03F500088322 /* RXSwiftPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RXSwiftPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C64B69290C03F500088322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C64B6B290C03F500088322 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		D0C64B8C290C06C800088322 /* Memo */ = {
 			isa = PBXGroup;
 			children = (
+				D0BE485D290C1E7700409A5B /* MemoViewModel.swift */,
 				D0C64B8E290C06F500088322 /* MemoListViewController.swift */,
 				D0C64B90290C095700088322 /* MemoListView.swift */,
 			);
@@ -247,6 +250,7 @@
 				D0C64B98290C09E900088322 /* BaseView.swift in Sources */,
 				D0C64B91290C095700088322 /* MemoListView.swift in Sources */,
 				D0C64B8F290C06F500088322 /* MemoListViewController.swift in Sources */,
+				D0BE485E290C1E7700409A5B /* MemoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,19 +6,24 @@
 //
 
 import UIKit
+
 import SnapKit
+import Then
 
 
 final class MemoListView: BaseView {
     
     // MARK: - Propertys
-    let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: .listLayout())
+    let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: .listLayout()).then {
+        $0.backgroundColor = .systemBackground
+    }
     
     
     
     
     // MARK: - Methods
     override func configureUI() {
+        self.backgroundColor = .systemBackground
         self.addSubview(collectionView)
     }
     
