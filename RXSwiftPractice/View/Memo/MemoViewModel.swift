@@ -21,10 +21,27 @@ enum RealmError: Error {
 
 final class MemoViewModel {
     
+    // MARK: - Init
+    init() {
+        memoResults = localRealm.objects(Memo.self).sorted(byKeyPath: "memoDate")
+        
+        notificationToken = memoResults.observe { [weak self] _ in
+            guard let self else { return }
+            self.memoArray.accept(self.convertResultsToArray())
+        }
+    }
+    
+    
+    
+    
     // MARK: - Propertys
     private let localRealm = try! Realm()
     
-    private lazy var memoList = BehaviorRelay(value: localRealm.objects(Memo.self).sorted(byKeyPath: "memoDate"))
+    private var notificationToken: NotificationToken?
+    
+    private var memoResults: Results<Memo>
+    
+    private var memoArray = PublishRelay<[Memo]>()
     
     
     
@@ -54,18 +71,17 @@ final class MemoViewModel {
     }
     
     
-    func fetch() -> [Memo] {
-        var memoArray: [Memo] = []
-        memoArray.append(contentsOf: memoList.value)
-        return memoArray
+    func bind(_ bag: DisposeBag, handler: @escaping ([Memo]) -> Void) {
+        memoArray.bind { value in
+            handler(value)
+        }
+        .disposed(by: bag)
     }
     
     
-    func bind(_ bag: DisposeBag, handler: @escaping () -> Void) {
-        memoList.asDriver(onErrorJustReturn: memoList.value)
-            .drive { _ in
-                handler()
-            }
-            .disposed(by: bag)
+    private func convertResultsToArray() -> [Memo] {
+        var memoArray: [Memo] = []
+        memoArray.append(contentsOf: memoResults)
+        return memoArray
     }
 }

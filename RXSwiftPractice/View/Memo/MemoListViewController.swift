@@ -67,18 +67,18 @@ final class MemoListViewController: BaseViewController {
     }
     
     
-    private func reloadCollectionView() {
+    private func reloadCollectionView(_ memoArray: [Memo]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Memo>()
         snapshot.appendSections([0])
-        snapshot.appendItems(viewModel.fetch())
+        snapshot.appendItems(memoArray)
         
         dataSource.apply(snapshot)
     }
     
     
     private func bind() {
-        viewModel.bind(disposeBag) { [weak self] in
-            self?.reloadCollectionView()
+        viewModel.bind(disposeBag) { [weak self] memoArray in
+            self?.reloadCollectionView(memoArray)
         }
     }
     
