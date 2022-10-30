@@ -26,12 +26,6 @@ final class MemoListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TestData
-//        (1...10).forEach {
-//            let memo = Memo(title: "\($0) title", content: "\($0) content")
-//            try? viewModel.create(memo)
-//        }
     }
     
     
@@ -87,7 +81,9 @@ final class MemoListViewController: BaseViewController {
     
     // MARK: - Objc Methods
     @objc private func writeButtonTapped() {
-        try? viewModel.create(Memo(title: "추가 : \(Int.random(in: 1...100))", content: "content : \(Int.random(in: 1...100))"))
+        let vc = WriteMemoViewController()
+        vc.viewModel = viewModel
+        transition(vc, transitionStyle: .push)
     }
 }
 
@@ -113,8 +109,6 @@ extension MemoListViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: registration, for: indexPath, item: itemIdentifier)
             return cell
         })
-        
-        //reloadCollectionView()
     }
 }
 
@@ -125,7 +119,10 @@ extension MemoListViewController {
 extension MemoListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(indexPath.item) : Selected")
+        let vc = WriteMemoViewController()
+        vc.viewModel = viewModel
+        vc.status.accept(.read)
+        transition(vc, transitionStyle: .push)
     }
     
 }
