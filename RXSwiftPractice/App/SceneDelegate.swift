@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        let vc = MemoListViewController()
+        let vc = MainViewController()
         let navi = UINavigationController(rootViewController: vc)
         
         window?.rootViewController = navi
