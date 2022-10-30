@@ -6,17 +6,13 @@
 //
 
 import UIKit
-
 import SnapKit
-import Then
 
 
 final class MemoListView: BaseView {
     
     // MARK: - Propertys
-    let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: .listLayout()).then {
-        $0.backgroundColor = .systemBackground
-    }
+    let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: .listLayout())
     
     
     

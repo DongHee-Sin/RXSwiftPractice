@@ -33,6 +33,8 @@ final class MemoListViewController: BaseViewController {
     
     // MARK: - Methods
     override func configure() {
+        view.backgroundColor = .white
+        
         setNavigationBar()
         setToolBar()
         

@@ -10,6 +10,12 @@
 		D013C409290EB9E800FC27DF /* UnsplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013C408290EB9E800FC27DF /* UnsplashViewController.swift */; };
 		D013C40B290EB9F100FC27DF /* UnsplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013C40A290EB9F100FC27DF /* UnsplashView.swift */; };
 		D013C40D290EBA8600FC27DF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013C40C290EBA8600FC27DF /* MainViewController.swift */; };
+		D013C411290EC54300FC27DF /* UnsplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013C410290EC54300FC27DF /* UnsplashViewModel.swift */; };
+		D013C414290EC56500FC27DF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013C413290EC56500FC27DF /* APIManager.swift */; };
+		D013C416290EC59C00FC27DF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D013C415290EC59C00FC27DF /* .gitignore */; };
+		D013C418290EC5AC00FC27DF /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013C417290EC5AC00FC27DF /* APIKeys.swift */; };
+		D013C41A290EC95C00FC27DF /* SearchPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013C419290EC95C00FC27DF /* SearchPhoto.swift */; };
+		D013C41C290ECEAD00FC27DF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013C41B290ECEAD00FC27DF /* String+Extension.swift */; };
 		D0258BCB290E6EF6007DC9F4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0258BCA290E6EF6007DC9F4 /* UIViewController+Extension.swift */; };
 		D0BE4856290C18E800409A5B /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BE4855290C18E800409A5B /* Memo.swift */; };
 		D0BE485E290C1E7700409A5B /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BE485D290C1E7700409A5B /* MemoViewModel.swift */; };
@@ -37,6 +43,12 @@
 		D013C408290EB9E800FC27DF /* UnsplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashViewController.swift; sourceTree = "<group>"; };
 		D013C40A290EB9F100FC27DF /* UnsplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashView.swift; sourceTree = "<group>"; };
 		D013C40C290EBA8600FC27DF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D013C410290EC54300FC27DF /* UnsplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashViewModel.swift; sourceTree = "<group>"; };
+		D013C413290EC56500FC27DF /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D013C415290EC59C00FC27DF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D013C417290EC5AC00FC27DF /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		D013C419290EC95C00FC27DF /* SearchPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhoto.swift; sourceTree = "<group>"; };
+		D013C41B290ECEAD00FC27DF /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D0258BCA290E6EF6007DC9F4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		D0BE4855290C18E800409A5B /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		D0BE485D290C1E7700409A5B /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
@@ -73,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D013C412290EC55400FC27DF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D013C413290EC56500FC27DF /* APIManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		D0C64B5D290C03F500088322 = {
 			isa = PBXGroup;
 			children = (
@@ -95,10 +115,13 @@
 				D0C64B8A290C05EF00088322 /* App */,
 				D0C64B93290C099A00088322 /* Database */,
 				D0C64B92290C098600088322 /* Utility */,
+				D013C412290EC55400FC27DF /* Manager */,
 				D0C64B8B290C06C200088322 /* View */,
 				D0C64B72290C03F500088322 /* Assets.xcassets */,
 				D0C64B74290C03F500088322 /* LaunchScreen.storyboard */,
 				D0C64B77290C03F500088322 /* Info.plist */,
+				D013C417290EC5AC00FC27DF /* APIKeys.swift */,
+				D013C415290EC59C00FC27DF /* .gitignore */,
 			);
 			path = RXSwiftPractice;
 			sourceTree = "<group>";
@@ -137,6 +160,8 @@
 			children = (
 				D013C408290EB9E800FC27DF /* UnsplashViewController.swift */,
 				D013C40A290EB9F100FC27DF /* UnsplashView.swift */,
+				D013C410290EC54300FC27DF /* UnsplashViewModel.swift */,
+				D013C419290EC95C00FC27DF /* SearchPhoto.swift */,
 			);
 			path = Unsplash;
 			sourceTree = "<group>";
@@ -172,6 +197,7 @@
 			children = (
 				D0C64B9A290C166B00088322 /* UICollectionViewLayout+Extension.swift */,
 				D0258BCA290E6EF6007DC9F4 /* UIViewController+Extension.swift */,
+				D013C41B290ECEAD00FC27DF /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -269,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C64B76290C03F500088322 /* LaunchScreen.storyboard in Resources */,
+				D013C416290EC59C00FC27DF /* .gitignore in Resources */,
 				D0C64B73290C03F500088322 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D013C41A290EC95C00FC27DF /* SearchPhoto.swift in Sources */,
 				D0258BCB290E6EF6007DC9F4 /* UIViewController+Extension.swift in Sources */,
 				D0C7DE65290D225000DF823A /* WriteMemoViewController.swift in Sources */,
 				D013C409290EB9E800FC27DF /* UnsplashViewController.swift in Sources */,
@@ -287,11 +315,15 @@
 				D013C40B290EB9F100FC27DF /* UnsplashView.swift in Sources */,
 				D0C64B6A290C03F500088322 /* AppDelegate.swift in Sources */,
 				D0C64B6C290C03F500088322 /* SceneDelegate.swift in Sources */,
+				D013C41C290ECEAD00FC27DF /* String+Extension.swift in Sources */,
 				D0BE4856290C18E800409A5B /* Memo.swift in Sources */,
 				D0C64B9B290C166B00088322 /* UICollectionViewLayout+Extension.swift in Sources */,
 				D013C40D290EBA8600FC27DF /* MainViewController.swift in Sources */,
 				D0C64B98290C09E900088322 /* BaseView.swift in Sources */,
 				D0C64B91290C095700088322 /* MemoListView.swift in Sources */,
+				D013C418290EC5AC00FC27DF /* APIKeys.swift in Sources */,
+				D013C414290EC56500FC27DF /* APIManager.swift in Sources */,
+				D013C411290EC54300FC27DF /* UnsplashViewModel.swift in Sources */,
 				D0C7DE67290D22A600DF823A /* WriteMemoView.swift in Sources */,
 				D0C64B8F290C06F500088322 /* MemoListViewController.swift in Sources */,
 				D0BE485E290C1E7700409A5B /* MemoViewModel.swift in Sources */,
