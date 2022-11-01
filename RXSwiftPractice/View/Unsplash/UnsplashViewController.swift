@@ -46,7 +46,6 @@ final class UnsplashViewController: BaseViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
         snapshot.appendSections([0])
         snapshot.appendItems(value)
-        
         dataSource.apply(snapshot)
     }
 
@@ -55,7 +54,7 @@ final class UnsplashViewController: BaseViewController {
         unsplashView.searchBar.rx.searchButtonClicked.withUnretained(self)
             .bind { (vc, _) in
                 if let query = vc.unsplashView.searchBar.text, query != "" {
-                    vc.viewModel.searchPhoto(query: query)
+                    vc.viewModel.searchPhoto(vc.disposeBag, query: query)
                 }
             }
             .disposed(by: disposeBag)
@@ -78,10 +77,9 @@ extension UnsplashViewController {
             var content = UIListContentConfiguration.valueCell()
             
             itemIdentifier.urls.thumb.toImage { image in
-                cell.largeContentImage = image
+                content.image = image
+                cell.contentConfiguration = content
             }
-            
-            cell.contentConfiguration = content
         }
         
         dataSource = UICollectionViewDiffableDataSource<Int, SearchResult>(collectionView: unsplashView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in

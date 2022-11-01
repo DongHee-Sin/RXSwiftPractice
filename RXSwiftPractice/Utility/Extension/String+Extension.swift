@@ -17,7 +17,9 @@ extension String {
             if let data = try? Data(contentsOf: url),
                let image = UIImage(data: data) {
                 
-                completionHandler(image)
+                DispatchQueue.main.async {
+                    completionHandler(image)
+                }
             }
         }
     }

@@ -25,19 +25,11 @@ final class UnsplashViewModel {
     
     
     
+    
+    
     // MARK: - Methods
-    func searchPhoto(query: String) {
-        APIManager.searchPhoto(query: query) { [weak self] searchPhoto, code, error in
-            guard let code, code == 200 else {
-                self?.searchPhotoResult.onError(SearchError.serverError)
-                return
-            }
-            
-            guard let searchPhoto else {
-                self?.searchPhotoResult.onError(SearchError.noPhoto)
-                return
-            }
-            
+    func searchPhoto(_ bag: DisposeBag, query: String) {
+        APIManager.searchPhoto(bag, query: query) { [weak self] searchPhoto in
             self?.searchPhotoResult.onNext(searchPhoto.results)
         }
     }

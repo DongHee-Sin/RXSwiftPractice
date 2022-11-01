@@ -24,7 +24,6 @@ final class UnsplashView: BaseView {
     
     
     
-    
     // MARK: - Methods
     override func configureUI() {
         [searchBar, collectionView].forEach {
