@@ -49,16 +49,21 @@ final class UnsplashViewModel {
 extension UnsplashViewModel: CommonViewModel {
     
     struct Input {
-        let searchTap: ControlEvent<Void>
+        let searchText: ControlProperty<String?>
+        
     }
     
     struct Output {
-        let searchTap: ControlEvent<Void>
+        let searchText: Observable<String>
         let searchResult: BehaviorSubject<[SectionOfCustomData]>
     }
     
     func transfrom(input: Input) -> Output {
-        let output = Output(searchTap: input.searchTap, searchResult: searchResult)
+        let text = input.searchText.orEmpty
+            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+        
+        let output = Output(searchText: text, searchResult: searchResult)
         return output
     }
     
