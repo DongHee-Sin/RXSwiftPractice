@@ -7,13 +7,17 @@
 
 import UIKit
 
+import RxDataSources
+import RxSwift
+import RxCocoa
+
 
 final class UnsplashViewController: BaseViewController {
 
     // MARK: - Propertys
     private let viewModel = UnsplashViewModel()
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
+    private var dataSource: RxCollectionViewSectionedReloadDataSource<SectionOfCustomData>!
     
     
     
@@ -41,15 +45,7 @@ final class UnsplashViewController: BaseViewController {
         bind()
     }
     
-    
-    private func reloadCollectionView(_ value: [SearchResult]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(value)
-        dataSource.apply(snapshot)
-    }
 
-    
     private func bind() {
         unsplashView.searchBar.rx.searchButtonClicked.withUnretained(self)
             .bind { (vc, _) in
@@ -60,9 +56,9 @@ final class UnsplashViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         
-        viewModel.bind(disposeBag) { [weak self] value in
-            self?.reloadCollectionView(value)
-        }
+        viewModel.searchPhotoResult
+            .bind(to: unsplashView.collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
 }
 
@@ -73,6 +69,8 @@ final class UnsplashViewController: BaseViewController {
 extension UnsplashViewController {
     
     private func configureDataSource() {
+        unsplashView.collectionView.register(UICollectionViewListCell.self, forCellWithReuseIdentifier: "cell")
+        
         let registration = UICollectionView.CellRegistration<UICollectionViewListCell, SearchResult> { cell, indexPath, itemIdentifier in
             var content = UIListContentConfiguration.valueCell()
             
@@ -82,10 +80,10 @@ extension UnsplashViewController {
             }
         }
         
-        dataSource = UICollectionViewDiffableDataSource<Int, SearchResult>(collectionView: unsplashView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueConfiguredReusableCell(using: registration, for: indexPath, item: itemIdentifier)
+        dataSource = RxCollectionViewSectionedReloadDataSource<SectionOfCustomData> { dataSource, collectionView, indexPath, item in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: registration, for: indexPath, item: item)
             return cell
-        })
+        }
     }
     
 }

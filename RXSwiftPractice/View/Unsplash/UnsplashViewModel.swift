@@ -20,9 +20,7 @@ enum SearchError: Error {
 final class UnsplashViewModel {
     
     // MARK: - Propertys
-    private var searchPhotoResult = BehaviorSubject<[SearchResult]>(value: [])
-    
-    
+    var searchPhotoResult = BehaviorSubject<[SectionOfCustomData]>(value: [])
     
     
     
@@ -30,12 +28,12 @@ final class UnsplashViewModel {
     // MARK: - Methods
     func searchPhoto(_ bag: DisposeBag, query: String) {
         APIManager.searchPhoto(bag, query: query) { [weak self] searchPhoto in
-            self?.searchPhotoResult.onNext(searchPhoto.results)
+            self?.searchPhotoResult.onNext([SectionOfCustomData(header: query, items: searchPhoto.results)])
         }
     }
     
     
-    func bind(_ bag: DisposeBag, handler: @escaping ([SearchResult]) -> Void) {
+    func bind(_ bag: DisposeBag, handler: @escaping ([SectionOfCustomData]) -> Void) {
         searchPhotoResult.bind { value in
             handler(value)
         }
