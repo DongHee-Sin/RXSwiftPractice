@@ -20,7 +20,7 @@ enum SearchError: Error {
 final class UnsplashViewModel {
     
     // MARK: - Propertys
-    var searchPhotoResult = BehaviorSubject<[SectionOfCustomData]>(value: [])
+    var searchResult = BehaviorSubject<[SectionOfCustomData]>(value: [])
     
     
     
@@ -28,16 +28,39 @@ final class UnsplashViewModel {
     // MARK: - Methods
     func searchPhoto(_ bag: DisposeBag, query: String) {
         APIManager.searchPhoto(bag, query: query) { [weak self] searchPhoto in
-            self?.searchPhotoResult.onNext([SectionOfCustomData(header: query, items: searchPhoto.results)])
+            self?.searchResult.onNext([SectionOfCustomData(header: query, items: searchPhoto.results)])
         }
     }
     
     
     func bind(_ bag: DisposeBag, handler: @escaping ([SectionOfCustomData]) -> Void) {
-        searchPhotoResult.bind { value in
+        searchResult.bind { value in
             handler(value)
         }
         .disposed(by: bag)
     }
+    
+}
+
+
+
+
+// MARK: - Input / Output
+extension UnsplashViewModel: CommonViewModel {
+    
+    struct Input {
+        let searchTap: ControlEvent<Void>
+    }
+    
+    struct Output {
+        let searchTap: ControlEvent<Void>
+        let searchResult: BehaviorSubject<[SectionOfCustomData]>
+    }
+    
+    func transfrom(input: Input) -> Output {
+        let output = Output(searchTap: input.searchTap, searchResult: searchResult)
+        return output
+    }
+    
     
 }

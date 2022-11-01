@@ -47,7 +47,10 @@ final class UnsplashViewController: BaseViewController {
     
 
     private func bind() {
-        unsplashView.searchBar.rx.searchButtonClicked.withUnretained(self)
+        let input = UnsplashViewModel.Input(searchTap: unsplashView.searchBar.rx.searchButtonClicked)
+        let output = viewModel.transfrom(input: input)
+        
+        output.searchTap.withUnretained(self)
             .bind { (vc, _) in
                 if let query = vc.unsplashView.searchBar.text, query != "" {
                     vc.viewModel.searchPhoto(vc.disposeBag, query: query)
@@ -56,7 +59,7 @@ final class UnsplashViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         
-        viewModel.searchPhotoResult
+        output.searchResult
             .bind(to: unsplashView.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
